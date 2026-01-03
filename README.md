@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NYC Restaurants Dashboard
+
+A NYC restaurants directory dashboard built with Next.js and TypeScript.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18+ (or Bun)
+- pnpm, npm, or bun
 
+### Installation
+
+1. Clone this repository
+2. Install dependencies:
 ```bash
-npm run dev
+bun install
 # or
-yarn dev
+npm install
 # or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Start the development server:
+```bash
+bun dev
+# or
+npm run dev
+# or
+pnpm dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## What's Built
 
-## Learn More
+This starter includes a working NYC restaurants dashboard with:
 
-To learn more about Next.js, take a look at the following resources:
+- **Data**: 20 hardcoded NYC restaurants with realistic properties (name, cuisine, price range, neighborhood, rating)
+- **Search**: Real-time search by restaurant name
+- **Filtering**: Dropdown to filter restaurants by cuisine
+- **Pagination**: 5 restaurants per page with navigation controls
+- **Stats**: Dashboard showing total restaurants, average rating, and current page
+- **Loading States**: Simulated API latency (200-500ms) with loading indicators
+- **TypeScript**: Fully typed with proper interfaces
+- **TanStack Query**: For data fetching and caching
+- **Tailwind CSS**: Clean, responsive styling
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Next.js 16** with App Router
+- **TypeScript** for type safety
+- **TanStack Query** for data fetching
+- **Tailwind CSS** for styling
+- **React** for UI components
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+├── api/restaurants.ts    # Mock API with simulated latency
+├── data/restaurants.ts   # Hardcoded restaurant data
+├── hooks/use-restaurants.ts # TanStack Query hook
+├── lib/query-client.ts   # Query client configuration
+├── providers/            # React Query provider
+├── types/                # TypeScript interfaces
+app/
+├── page.tsx             # Main dashboard page
+├── layout.tsx           # Root layout with providers
+└── globals.css          # Tailwind styles
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Features Overview
+
+### Search & Filter
+- Search input filters restaurants by name (case-insensitive)
+- Cuisine dropdown filters by available cuisines
+- Both reset pagination to page 1
+
+### Pagination
+- 5 restaurants per page
+- Previous/Next buttons
+- Individual page number buttons
+- Disabled states for boundary pages
+
+### Stats Dashboard
+- Total restaurants count (respects current filters)
+- Average rating across filtered restaurants
+- Current page indicator
+
+### Mock API
+- Simulated 200-500ms latency
+- Filters restaurants by search term and cuisine
+- Returns paginated results with metadata
+
+## Available Scripts
+
+```bash
+bun dev        # Start development server
+bun build      # Build for production
+bun start      # Start production server
+bun lint       # Run ESLint
+```
+
